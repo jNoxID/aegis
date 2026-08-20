@@ -17,6 +17,7 @@ python -m venv .venv
 . .venv/bin/activate
 python -m pip install -e '.[dev]'
 aegis doctor
+aegis server
 pytest
 ```
 
@@ -29,6 +30,7 @@ Set-Location (git rev-parse --show-toplevel)
 py -3.13 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -e ".[dev]"
 .\.venv\Scripts\aegis.exe doctor
+.\.venv\Scripts\aegis.exe server
 .\.venv\Scripts\python.exe -m pytest
 ```
 
@@ -45,6 +47,12 @@ evaluation:
 ```bash
 aegis scope-check --domain app.lab.example --allow-domain app.lab.example
 ```
+
+`aegis server` starts the first persistent AEGIS runtime on
+`http://127.0.0.1:8000`. Its root response, health check (`/health`), versioned
+status endpoint (`/api/v1/status`), and interactive API documentation (`/docs`)
+are available over HTTP. Use `aegis server --help` to configure the local host
+and port. The equivalent module entry point is `python -m aegis server`.
 
 See [the architecture](ARCHITECTURE.md), [threat model](THREAT_MODEL.md),
 [security policy](SECURITY.md), and [contribution guide](CONTRIBUTING.md).

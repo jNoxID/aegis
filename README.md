@@ -14,7 +14,7 @@ AEGIS requires Python 3.13 or newer.
 
 ```bash
 python -m venv .venv
-. .venv/bin/activate
+. .venv/Scripts/activate
 python -m pip install -e '.[dev]'
 aegis doctor
 aegis server

@@ -21,5 +21,17 @@ def test_api_status():
 
 
 def test_root_and_documentation_are_available():
-    assert client.get("/").status_code == 200
+    root = client.get("/")
+
+    assert root.status_code == 200
+    assert root.headers["content-type"].startswith("text/html")
+    assert "AEGIS" in root.text
     assert client.get("/docs").status_code == 200
+
+
+def test_web_console_assets_are_available():
+    favicon = client.get("/favicon.ico")
+
+    assert favicon.status_code == 200
+    assert favicon.headers["content-type"].startswith("image/svg+xml")
+    assert client.get("/static/app.css").status_code == 200

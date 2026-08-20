@@ -57,6 +57,7 @@ def test_module_cli_starts_a_real_http_server() -> None:
     )
 
     try:
+        root_code, root_body = _get_when_ready(f"http://127.0.0.1:{port}/", process)
         health_code, health_body = _get_when_ready(
             f"http://127.0.0.1:{port}/health", process
         )
@@ -64,13 +65,22 @@ def test_module_cli_starts_a_real_http_server() -> None:
             f"http://127.0.0.1:{port}/api/v1/status", process
         )
         docs_code, _ = _get_when_ready(f"http://127.0.0.1:{port}/docs", process)
+        favicon_code, _ = _get_when_ready(f"http://127.0.0.1:{port}/favicon.ico", process)
 
+        assert root_code == 200
+        assert b"Security Operations Platform" in root_body
         assert health_code == 200
         assert json.loads(health_body) == {"status": "ok", "service": "aegis"}
         assert status_code == 200
         assert json.loads(status_body)["service"] == "aegis"
         assert docs_code == 200
+        assert favicon_code == 200
+        time.sleep(2)
         assert process.poll() is None
+        repeated_health_code, _ = _get_when_ready(
+            f"http://localhost:{port}/health", process
+        )
+        assert repeated_health_code == 200
     finally:
         process.terminate()
         try:

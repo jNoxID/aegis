@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#071116">
+    <meta name="description" content="AEGIS security operations control plane">
+    <meta property="og:title" content="AEGIS Security Operations Platform">
+    <meta property="og:description" content="Policy-gated operations, system health, and workflow visibility.">
+    <meta property="og:type" content="website">
+    <title>AEGIS · Security Operations</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/static/app.css">
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true"></div>
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" aria-label="AEGIS dashboard">
+        <span class="brand-mark">A</span>
+        <span><strong>AEGIS</strong><small>CONTROL PLANE</small></span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a class="nav-link active" href="#dashboard" data-section="dashboard"><span>01</span> Dashboard</a>
+        <a class="nav-link" href="#system-status" data-section="system-status"><span>02</span> System Status</a>
+        <a class="nav-link" href="#engagements" data-section="engagements"><span>03</span> Engagements</a>
+        <a class="nav-link" href="#assets" data-section="assets"><span>04</span> Assets</a>
+        <a class="nav-link" href="#findings" data-section="findings"><span>05</span> Findings</a>
+        <a class="nav-link" href="#workflows" data-section="workflows"><span>06</span> Workflows</a>
+        <a class="nav-link" href="#policy" data-section="policy"><span>07</span> Policy</a>
+        <a class="nav-link" href="#settings" data-section="settings"><span>08</span> Settings</a>
+      </nav>
+      <div class="sidebar-footer"><span class="pulse"></span><span>LOCAL NODE<br><strong>CONNECTED</strong></span></div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <button class="menu" id="menu" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        <div><span class="eyebrow">SECURITY OPERATIONS PLATFORM</span><h1 id="page-title">Dashboard</h1></div>
+        <a class="api-link" href="/docs">API DOCS <span>↗</span></a>
+      </header>
+
+      <section class="view active" id="dashboard" aria-labelledby="dashboard-title">
+        <div class="hero">
+          <div><span class="kicker">AEGIS / OVERVIEW</span><h2 id="dashboard-title">Command visibility.<br><em>Policy-first control.</em></h2><p>Live status from the local AEGIS control plane. No synthetic telemetry.</p></div>
+          <div class="system-orbit" aria-label="System operational"><div><span class="pulse"></span><strong>OPERATIONAL</strong><small>SYSTEM STATE</small></div></div>
+        </div>
+        <div class="status-grid">
+          <article><span class="card-label">SYSTEM</span><strong><i class="dot"></i> Operational</strong><small>Application runtime</small></article>
+          <article><span class="card-label">API</span><strong id="api-state"><i class="dot"></i> Connecting</strong><small>/api/v1/status</small></article>
+          <article><span class="card-label">POLICY ENGINE</span><strong><i class="dot"></i> Active</strong><small>Scope gateway available</small></article>
+          <article><span class="card-label">VERSION</span><strong id="version">—</strong><small>Installed release</small></article>
+        </div>
+        <div class="metrics">
+          <article><span>ASSETS</span><strong>0</strong><small>No asset store configured</small></article>
+          <article><span>FINDINGS</span><strong>0</strong><small>No finding store configured</small></article>
+          <article><span>ACTIVE WORKFLOWS</span><strong>0</strong><small>No workflow runtime configured</small></article>
+        </div>
+        <div class="activity"><div><span class="kicker">RUNTIME</span><h3>Control plane is ready</h3><p>Use the API documentation to inspect available operations. Operational data will appear here as services are enabled.</p></div><a href="/docs">Explore API <span>→</span></a></div>
+      </section>
+
+      <section class="view placeholder" id="system-status"><span class="kicker">SYSTEM STATUS</span><h2>Runtime details</h2><p>Detailed component monitoring is not implemented yet.</p></section>
+      <section class="view placeholder" id="engagements"><span class="kicker">ENGAGEMENTS</span><h2>Authorized engagements</h2><p>Not implemented yet.</p></section>
+      <section class="view placeholder" id="assets"><span class="kicker">ASSETS</span><h2>Asset inventory</h2><p>Not implemented yet.</p></section>
+      <section class="view placeholder" id="findings"><span class="kicker">FINDINGS</span><h2>Security findings</h2><p>Not implemented yet.</p></section>
+      <section class="view placeholder" id="workflows"><span class="kicker">WORKFLOWS</span><h2>Operational workflows</h2><p>Not implemented yet.</p></section>
+      <section class="view placeholder" id="policy"><span class="kicker">POLICY</span><h2>Policy gateway</h2><p>Policy evaluation is available through the AEGIS application services. This management view is not implemented yet.</p></section>
+      <section class="view placeholder" id="settings"><span class="kicker">SETTINGS</span><h2>Platform settings</h2><p>Not implemented yet.</p></section>
+    </main>
+  </body>
+</html>

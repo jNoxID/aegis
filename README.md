@@ -20,6 +20,25 @@ aegis doctor
 pytest
 ```
 
+On Windows PowerShell, run the installation from the repository root (the
+directory that contains this `pyproject.toml`):
+
+```powershell
+git rev-parse --show-toplevel
+Set-Location (git rev-parse --show-toplevel)
+py -3.13 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -e ".[dev]"
+.\.venv\Scripts\aegis.exe doctor
+.\.venv\Scripts\python.exe -m pytest
+```
+
+If pip reports that neither `setup.py` nor `pyproject.toml` was found, first
+check `Test-Path .\pyproject.toml`. A `False` result means the command is being
+run from the wrong directory (or from an incomplete checkout); do not create a
+second packaging file there. This repository is a single Python project with a
+`src/aegis` package, and its authoritative packaging configuration is the
+top-level `pyproject.toml`.
+
 `aegis scope-check` is a local, side-effect-free demonstration of scope
 evaluation:
 
